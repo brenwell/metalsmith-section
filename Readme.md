@@ -17,9 +17,38 @@ Metalsmith(__dirname)
   .build();
 ```
 
-## Complete example
+## Options
 
-**javascript**
+Pass an options object
+
+```js
+const options = {
+    pattern: "**/*.html",
+    delimiter: "my-section:::",
+    removeFromContents: false,
+    metaDataKey: 'list'
+}
+```
+
+### pattern
+
+default is `*`
+
+### delimiter
+
+default is `"section:::"`
+
+### removeFromContents
+
+default is `true`
+
+###metaDataKey
+
+default is `"section"`
+
+## Example
+
+**Javascript**
 ```js
 var Metalsmith = require('metalsmith');
 var sections = require('metalsmith-subsections');
