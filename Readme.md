@@ -42,7 +42,7 @@ default is `"section:::"`
 
 default is `true`
 
-###metaDataKey
+### metaDataKey
 
 default is `"section"`
 
