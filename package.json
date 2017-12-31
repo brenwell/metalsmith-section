@@ -1,0 +1,19 @@
+{
+  "name": "metalsmith-subsections",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "debug": "DEBUG=metalsmith:subsection npm start"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "handlebars": "^4.0.5",
+    "metalsmith": "^2.1.0",
+    "metalsmith-debug": "^1.2.0",
+    "metalsmith-layouts": "^1.4.1",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-markdownit": "^0.4.0",
+    "metalsmith-watch": "^1.0.3",
+    "multimatch": "^2.1.0"
+  }
+}
