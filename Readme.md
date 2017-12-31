@@ -17,7 +17,7 @@ Metalsmith(__dirname)
   .build();
 ```
 
-## Complete example (creating section accordions)
+## Complete example
 
 **javascript**
 ```js
@@ -31,10 +31,6 @@ Metalsmith(__dirname)
     .destination('./build')
     .use(markdown())
     .use(layouts({
-        engine: 'handlebars',
-        pattern: "**/*.html"
-    }))
-    .use(inplace({
         engine: 'handlebars',
         pattern: "**/*.html"
     }))
