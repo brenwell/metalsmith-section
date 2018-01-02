@@ -36,7 +36,7 @@ Pass an options object
 
 ```js
 const options = {
-    pattern: "**/*.html",
+    pattern: "*",
     prefix: "my-section:::",
     removeFromContents: false,
     metaDataKey: 'list'
