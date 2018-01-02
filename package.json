@@ -1,7 +1,7 @@
 {
   "name": "metalsmith-section",
   "description": "A metalsmith plugin which parses html content into named sections.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/metalsmith-section.js",
   "dependencies": {
     "metalsmith-debug": "^1.2.0",

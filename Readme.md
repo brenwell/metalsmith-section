@@ -80,11 +80,11 @@ Metalsmith(__dirname)
     .source('./resources')
     .destination('./build')
     .use(markdown())
+    .use(section())
     .use(layouts({
         engine: 'handlebars',
         pattern: "**/*.html"
     }))
-    .use(section());
 ```
 
 **Markdown**
