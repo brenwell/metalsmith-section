@@ -1,7 +1,7 @@
 # metalsmith-section
 
 A metalsmith plugin which will section your html content into metadata properties. Its ideal for single page sites with multiple content blocks.
-It can strip out sections of html from `contents` and make them accessible in your templates via their name. Additionally Iit can produce arrays of sections for iteration
+It can strip out sections of html from `metadata.contents` and make them accessible in your templates via their name. Additionally it can produce arrays of sections for iteration.
 
 ## Installation
 
