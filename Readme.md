@@ -1,16 +1,16 @@
-# metalsmith-subsections
+# metalsmith-section
 
 A metalsmith plugin which parses html content into named sections.
 
 ## Installation
 
-    $ npm install metalsmith-subsections
+    $ npm install metalsmith-section
 
 ## Usage
 
 ```js
 var Metalsmith = require('metalsmith');
-var sections = require('metalsmith-subsections');
+var sections = require('metalsmith-section');
 
 Metalsmith(__dirname)
   .use(sections())
@@ -51,7 +51,7 @@ default is `"section"`
 **Javascript**
 ```js
 var Metalsmith = require('metalsmith');
-var sections = require('metalsmith-subsections');
+var sections = require('metalsmith-section');
 var layouts = require('metalsmith-layouts');
 var markdown = require('metalsmith-markdown');
 
