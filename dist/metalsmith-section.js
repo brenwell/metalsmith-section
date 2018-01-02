@@ -11,7 +11,7 @@ module.exports = plugin;
  *
  * @param {Object} opts - Options to pass to the plugin.
  * @param {string} opts.pattern - The pattern used to match to the file paths.
- * @param {string} opts.delimiter - The token to split the html into sections by.
+ * @param {string} opts.prefix - The token to split the html into sections by.
  * @param {boolean} opts.removeFromContents - Whether or not to remove sections from the content metaData.
  * @param {string} opts.metaDataKey - What property to store result in the metadata.
  * @return {function}  The plugin function
@@ -20,7 +20,7 @@ module.exports = plugin;
 function plugin(opts) {
   opts = opts || {};
   opts.pattern = opts.pattern || ["**/*.html"];
-  opts.delimiter = opts.delimiter || "section:::";
+  opts.prefix = opts.prefix || "section:::";
   opts.removeFromContents = opts.removeFromContents || true;
   opts.metaDataKey = opts.metaDataKey || "sections";
   debug("myplugin options: %s", JSON.stringify(opts));
@@ -29,8 +29,8 @@ function plugin(opts) {
     Object.keys(files).forEach(function (file) {
       if (multimatch(file, opts.pattern).length) {
         var data = files[file];
-        debug("converting file: %s", file, opts.delimiter);
-        var re = new RegExp("<.*>".concat(opts.delimiter), "g");
+        debug("converting file: %s", file, opts.prefix);
+        var re = new RegExp("<.*>".concat(opts.prefix), "g");
         var dataString = data.contents.toString();
         var strings = dataString.split(re);
         if (strings.length <= 1) return;
