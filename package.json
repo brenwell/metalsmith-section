@@ -1,5 +1,5 @@
 {
-  "name": "metalsmith-subsections",
+  "name": "metalsmith-section",
   "description": "A metalsmith plugin which parses html content into named sections.",
   "version": "1.0.0",
   "main": "dist/metalsmith-section.js",
