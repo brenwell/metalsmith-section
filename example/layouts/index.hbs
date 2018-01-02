@@ -4,12 +4,19 @@
   <title>{{title}}</title>
 </head>
 <body>
+
 {{{contents}}}
+
 <hr/>
+
 {{{sections.about}}}
 <h2>Colors I like</h2>
+
+<ul>
 {{#each sections.list}}
-<li>{{{this}}}</li>
+    <li>{{{this}}}</li>
 {{/each}}
+</ul>
+
 </body>
 </html>

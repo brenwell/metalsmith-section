@@ -10,9 +10,7 @@ const destination = './build'
 
 Metalsmith(__dirname)
     .metadata({
-        title: "Brendon Blackwell - Freelance Web & iOS Software Developer",
-        description: "It's about saying »Hello« to the World.",
-        assets: "/assets"
+        title: "metalsmith-section example"
     })
     .source(source)
     .destination(destination)

@@ -1,9 +1,6 @@
 var debug = require("debug")("metalsmith:section");
 
 var multimatch = require("multimatch");
-
-var _require = require("path"),
-    extname = _require.extname;
 /* eslint-disable id-length */
 // Expose `plugin`.
 
@@ -22,7 +19,7 @@ module.exports = plugin;
 
 function plugin(opts) {
   opts = opts || {};
-  opts.pattern = opts.pattern || ["*"];
+  opts.pattern = opts.pattern || ["**/*.html"];
   opts.delimiter = opts.delimiter || "section:::";
   opts.removeFromContents = opts.removeFromContents || true;
   opts.metaDataKey = opts.metaDataKey || "sections";
@@ -30,15 +27,12 @@ function plugin(opts) {
   return function parse(files, metalsmith, done) {
     setImmediate(done);
     Object.keys(files).forEach(function (file) {
-      if (isHTML(file) && multimatch(file, opts.pattern).length) {
+      if (multimatch(file, opts.pattern).length) {
         var data = files[file];
         debug("converting file: %s", file, opts.delimiter);
         var re = new RegExp("<.*>".concat(opts.delimiter), "g");
-        debug("re:", re);
         var dataString = data.contents.toString();
-        debug("string:", dataString);
         var strings = dataString.split(re);
-        debug("strings:", strings.length);
         if (strings.length <= 1) return;
         data[opts.metaDataKey] = {};
 
@@ -71,17 +65,6 @@ function plugin(opts) {
       }
     });
   };
-}
-/**
- * Determines if html.
- *
- * @param  {<type>}   file  The file path
- * @return {boolean}  True if html, False otherwise.
- */
-
-
-function isHTML(file) {
-  return /\.html|\.htm/.test(extname(file));
 }
 
 //# sourceMappingURL=metalsmith-section.js.map

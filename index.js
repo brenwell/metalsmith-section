@@ -1,7 +1,5 @@
 const debug = require("debug")("metalsmith:section");
 const multimatch = require("multimatch");
-const { extname } = require("path");
-
 /* eslint-disable id-length */
 
 // Expose `plugin`.
@@ -12,7 +10,7 @@ module.exports = plugin;
  *
  * @param {Object} opts - Options to pass to the plugin.
  * @param {string} opts.pattern - The pattern used to match to the file paths.
- * @param {string} opts.delimiter - The token to split the html into sections by.
+ * @param {string} opts.prefix - The token to split the html into sections by.
  * @param {boolean} opts.removeFromContents - Whether or not to remove sections from the content metaData.
  * @param {string} opts.metaDataKey - What property to store result in the metadata.
  * @return {function}  The plugin function
@@ -21,8 +19,8 @@ function plugin(opts)
 {
 
     opts = opts || {};
-    opts.pattern = opts.pattern || ["*"];
-    opts.delimiter = opts.delimiter || "section:::";
+    opts.pattern = opts.pattern || ["**/*.html"];
+    opts.prefix = opts.prefix || "section:::";
     opts.removeFromContents = opts.removeFromContents || true;
     opts.metaDataKey = opts.metaDataKey || "sections"
 
@@ -36,24 +34,18 @@ function plugin(opts)
         Object.keys(files).forEach((file) =>
         {
 
-            if (isHTML(file) && multimatch(file, opts.pattern).length)
+            if (multimatch(file, opts.pattern).length)
             {
 
                 const data = files[file];
 
-                debug("converting file: %s", file, opts.delimiter);
+                debug("converting file: %s", file, opts.prefix);
 
-                const re = new RegExp(`<.*>${opts.delimiter}`,"g");
-
-                debug("re:" , re)
+                const re = new RegExp(`<.*>${opts.prefix}`,"g");
 
                 const dataString = data.contents.toString()
 
-                debug("string:" , dataString)
-
                 const strings = dataString.split(re);
-
-                debug("strings:" ,strings.length)
 
                 if (strings.length <= 1) return
 
@@ -104,15 +96,4 @@ function plugin(opts)
             }
         });
     };
-}
-
-/**
- * Determines if html.
- *
- * @param  {<type>}   file  The file path
- * @return {boolean}  True if html, False otherwise.
- */
-function isHTML(file)
-{
-    return (/\.html|\.htm/).test(extname(file));
 }
