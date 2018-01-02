@@ -37,7 +37,7 @@ Pass an options object
 ```js
 const options = {
     pattern: "*",
-    prefix: "my-section:::",
+    prefix: "section:::",
     removeFromContents: false,
     metaDataKey: 'list'
 }
